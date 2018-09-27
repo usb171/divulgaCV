@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cidade Verde</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="bower_components/morris.js/morris.css">
+  <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+<style>
+  .content-wrapper {   
+    background-image: url("dist/img/candidatos/fundo.jpg");
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .navbar {
+    background-color: rgba(255, 255, 255, 0.5);
+
+  }
+
+  .box-primary {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    box-shadow: 5px 5px 20px grey;
+  }
+
+  .info-box-content{
+    box-shadow: 2px 2px .5px grey;
+
+  }
+
+  .nome {
+    font-size: 1.3em;
+  }
+
+  h5 {
+
+    font-size: .7em;
+
+  }
+
+  h4 {
+    font-size: 1.5em;
+    white-space: nowrap;
+
+  }
+
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+ }
+
+ #pics {
+  display: none;
+}
+
+ 
+</style>
+      
+
+
+<body class="hold-transition skin-blue sidebar-collapse  layout-top-nav">
+
+<div class="wrapper">
+    
+  
+    <header class="main-header">
+	    <nav class="navbar navbar-static-top">
+	       <div class="container-fluid">
+		       <div class="navbar-header">
+		          <a href="#" class="navbar-brand"><b>Divulga</b>CV</a>
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+		          	<i class="fa fa-bars"></i>
+		          </button>
+		      </div>
+
+		      <div class="collapse navbar-collapse" id="navbar-collapse">
+		        <ul class="nav navbar-nav">
+		          <li><a href="index.html">Apuração <span class="sr-only">(current)</span></a></li>
+		          <li class="active" ><a href="grafico.html">Gráfico</a></li>
+              <li><a href="maisvotados.html">Mais Votados</a></li>           
+              
+		        </ul>           
+		      </div>
+	      </div>
+	    </nav>
+     </header>
+
+
+    <div class="content-wrapper">  
+    </br></br></br> 
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+		          	<div class="box box-primary">            
+		            <div class="box-header with-border">
+		              <h3 class="box-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Governador</font></font></h3>
+		              <div class="box-tools pull-right">
+		                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+		              </div>
+		            </div>
+		            <div class="box-body">
+
+		              <div id="container" style="width: 100%;">
+		                <canvas id="canvas"></canvas>
+		              </div>
+
+		              <div id="pics"></div>
+             
+
+		            </div>
+		          </div>
+				</div>
+			</div>  
+		</section>
+	</div>
+</div>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="bower_components/chart.js/Chart.2.7.2.js"></script>
+<script src="bower_components/chart.js/utils.js"></script>
+
+<script>
+
+
+var ctx = document.getElementById("canvas").getContext('2d');
+Chart.defaults.global.legend.display = false;
+Chart.defaults.global.defaultFontSize = '22'
+Chart.defaults.global.defaultFontColor = '#17202A';
+
+
+var data = {
+ 		 labels: [ "Wellington Dias", "Dr. Pesspa", "Luciano Nunes", "Elmano Férrer", "Lourdes Melo", "Luciene Santos", "Fábio Sérvio", "Maria Sueli", "Romualdo Seno", "Valter Alencar"],
+ 		 labelsImg: ['doutorPessoa', 'wellingtonDias', 'lucianoNunes', 'elmano'],
+ 		     "fill": false,
+
+         datasets: [{
+            data: [30, 25, 20, 10, 10, 5, 5, 3, 1, 1],
+            backgroundColor: [
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                'rgba(60, 99, 132, 0.4)',
+                
+            ],
+
+            borderColor: [
+                'rgba(60, 99, 132, 1)',        
+			    'rgba(60, 99, 132, 1)',        
+			    'rgba(60, 99, 132, 1)',        
+			    'rgba(60, 99, 132, 1)',
+			    'rgba(60, 99, 132, 1)',        
+			    'rgba(60, 99, 132, 1)',        
+			    'rgba(60, 99, 132, 1)',        
+			    'rgba(60, 99, 132, 1)', 
+			    'rgba(60, 99, 132, 1)',        
+			    'rgba(60, 99, 132, 1)',        
+			            
+            ],
+             borderWidth: 2,
+  			 hoverBorderWidth: 0
+        }]
+};
+
+var opt = {
+
+    scales: {
+        yAxes: [{
+            ticks: {
+                display: false
+            }
+        }]
+    },
+    events: false,
+    
+    tooltips: {
+        enabled: false
+    },
+    hover: {
+        animationDuration: 0
+    },
+    animation: {
+        duration: 800,
+        easing: "easeOutQuart",
+        onComplete: function () {
+          var ctx = this.chart.ctx;
+          ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+          ctx.fillStyle = "#2C3E50";
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+
+          this.data.datasets.forEach(function (dataset) {
+            for (var i = 0; i < dataset.data.length; i++) {
+                var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+                scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                ctx.fillStyle = '#000';
+                var y_pos = model.y - 5;                    
+                if ((scale_max - model.y) / scale_max >= 0.93)
+                    y_pos = model.y + 40; 
+                ctx.fillText(dataset.data[i] + "%", model.x, y_pos);
+            }
+          });               
+        }
+    }
+};
+
+
+
+myLineChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: opt
+});
+
+
+  
+</script>
+
+
+</body>
